@@ -1,6 +1,7 @@
 import { Component, OnInit, Optional, SkipSelf } from '@angular/core';
 import { AppService } from '../app.service';
 import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 
 interface IUserInfor {
   id: number;
@@ -16,22 +17,21 @@ interface IUserInfor {
   styleUrl: './table.component.css',
 })
 export class TableComponent implements OnInit {
-  data!: IUserInfor[];
-  constructor(@SkipSelf() @Optional() private appSevice: AppService, private http: HttpClient) {
-    this.data = [];
-  }
+  usersSubject: Subject<IUserInfor[]> = new Subject<IUserInfor[]>();
+
+  constructor(@SkipSelf() @Optional() private appSevice: AppService, private http: HttpClient) {}
 
   name(): string {
     return this.appSevice.getName;
   }
 
   ngOnInit(): void {
-    this.getListDataHandler();
+    this.getUserDataObs().subscribe((value) => {
+      this.usersSubject.next(value);
+    });
   }
 
-  getListDataHandler(): void {
-    this.http.get<IUserInfor[]>('https://server-deployment-yvii.onrender.com/todo').subscribe((value) => {
-      this.data = value;
-    });
+  getUserDataObs(): Observable<IUserInfor[]> {
+    return this.http.get<IUserInfor[]>('https://server-deployment-yvii.onrender.com/todo');
   }
 }

@@ -37,9 +37,10 @@
           <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
         </tr>
       </thead>
+
+      @if(usersSubject | async; as users){
       <tbody class="divide-y divide-gray-200">
-        <!-- Sample User 1 -->
-        @for (user of data; track user) {
+        @for (user of users; track user.id ) {
         <tr class="hover:bg-gray-50">
           <td class="px-6 py-4 whitespace-nowrap">
             <div class="flex items-center">
@@ -66,6 +67,8 @@
         </tr>
         }
       </tbody>
+      }
+
     </table>
   </div>
 
