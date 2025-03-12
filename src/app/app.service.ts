@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AppService {
-  name: string = '';
+  private token: string = '';
 
-  get getName(): string {
-    return this.name;
+  get getToken(): string {
+    return this.token;
   }
 
-  set setName(name: string) {
-    this.name = name;
+  set setToken(token: string) {
+    this.token = token;
   }
 }

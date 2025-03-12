@@ -23,7 +23,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.invalid) return console.log('Invalid form');
     console.log(this.loginForm.value);
-    this.appService.setName = this.loginForm.value.email as string;
+    this.appService.setToken = this.loginForm.value.email as string;
     this.router.navigate(['/table']);
   }
 }
