@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { TableRoutingModule } from './table-routing.module';
 import { TableComponent } from './table.component';
+import { TableItemComponent } from './table-item/table-item.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
   declarations: [
-    TableComponent
+    TableComponent,
+    TableItemComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,

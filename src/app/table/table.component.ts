@@ -2,13 +2,7 @@ import { Component, OnDestroy, OnInit, Optional, SkipSelf } from '@angular/core'
 import { AppService } from '../app.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, Subscription } from 'rxjs';
-
-interface IUserInfor {
-  id: number;
-  name: string;
-  age: string;
-  nationality: string;
-}
+import { IUserInfor } from './interfaces/table.interface';
 
 @Component({
   selector: 'app-table',
