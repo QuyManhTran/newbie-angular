@@ -4,4 +4,5 @@ export interface IUserInfor {
   age: string;
   email: string;
   nationality: string;
+  createdAt: string;
 }
